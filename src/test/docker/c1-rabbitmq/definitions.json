@@ -1,0 +1,79 @@
+{
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "exchanges": [
+    {
+      "vhost": "/",
+      "name": "e",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "name": "e-dl",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "vhost": "/",
+      "name": "q",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q-dl",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e-dl",
+      "destination": "q-dl",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    }
+  ],
+  "users": [
+    {
+      "name": "test",
+      "password_hash": "Ii1+zLlNzJJwLbkFitU5HIE4CvNWIjxKhqTi/d9CR6FeKPZe",
+      "tags": "administrator"
+    }
+  ],
+  "permissions": [
+    {
+      "vhost": "/",
+      "user": "test",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ]
+}

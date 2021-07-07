@@ -1,0 +1,232 @@
+{
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "exchanges": [
+    {
+      "vhost": "/",
+      "name": "e",
+      "type": "x-consistent-hash",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "name": "e-dl",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "vhost": "/",
+      "name": "q1",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q2",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q3",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q4",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q5",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q6",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q7",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q8",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q9",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q10",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "e-dl"
+      }
+    },
+    {
+      "vhost": "/",
+      "name": "q-dl",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q1",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q2",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q3",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q4",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q5",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q6",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q7",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q8",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q9",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e",
+      "destination": "q10",
+      "destination_type": "queue",
+      "routing_key": "1",
+      "arguments": {}
+    },
+    {
+      "vhost": "/",
+      "source": "e-dl",
+      "destination": "q-dl",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    }
+  ],
+  "users": [
+    {
+      "name": "test",
+      "password_hash": "Ii1+zLlNzJJwLbkFitU5HIE4CvNWIjxKhqTi/d9CR6FeKPZe",
+      "tags": "administrator"
+    }
+  ],
+  "permissions": [
+    {
+      "vhost": "/",
+      "user": "test",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ]
+}
